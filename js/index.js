@@ -85,6 +85,10 @@ messageForm.addEventListener("submit", function(event) {
     showMessagesSection();
     messageList.append(newMessage);
 
+    // auto-scroll to message section
+
+    messageSection.scrollIntoView({ behavior: "smooth" });
+
     // create remove and edit buttons
 
     setupRemoveButton();
