@@ -189,7 +189,7 @@ messageForm.addEventListener("submit", function(event) {
 
       // reset message html
 
-      messageSpan.innerHTML = `<a href="mailto:${usersEmail}">${usersName}</a> wrote: ${usersMessage}`;
+      messageSpan.innerHTML = `wrote: ${usersMessage}`;
       editTextBox.remove();
       removeDisplayedButtons();
       setupRemoveButton();
