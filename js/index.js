@@ -29,13 +29,24 @@ for (let i = 0; i < skills.length; i++) {
 ////////////////////////// messages ////////////////////////////
 ////////////////////////////////////////////////////////////////
 
-// target heading elements
+// target message elements
 
 const messageForm = document.querySelector('form[name="leave_message"]');
 const messageSection = document.getElementById("messages");
 
+// functions to toggle display of the messages section
 
-messageSection.style.display = "none";
+const showMessagesSection = () => {
+  messageSection.style.display = "block";
+};
+
+const hideMessagesSection = () => {
+  messageSection.style.display = "none";
+};
+
+// initially hide message section
+
+hideMessagesSection();
 
 // form functionality
 
@@ -73,109 +84,118 @@ messageForm.addEventListener("submit", function(event) {
 
     showMessagesSection();
     messageList.append(newMessage);
+
+    // create remove and edit buttons
+
+    setupRemoveButton();
+    setupEditButton();
   };
 
-  // functions to create buttons
+  const removeDisplayedButtons = () => {
+    const buttons = newMessage.querySelectorAll("button");
 
-  const removeButton = document.createElement("button");
-  const editButton = document.createElement("button");
-  const saveButton = document.createElement("button");
-
-  const createRemoveButton = () => {
-    removeButton.innerText = "remove";
-    removeButton.type = "button";
-    newMessage.append(removeButton); 
-  };
-
-  const createEditButton = () => {
-    editButton.innerText = "edit";
-    editButton.type = "button";
-    newMessage.append(editButton);
-  };
-
-  const createSaveButton = () => {
-    saveButton.innerText = "save";
-    saveButton.type = "button";
-    newMessage.append(saveButton);
-  };
-
-  // functions to toggle display of messages section
-
-  const showMessagesSection = () => {
-    messageSection.style.display = "inline-block";
-  };
-
-  const hideMessagesSection = () => {
-    messageSection.style.display = "none";
-  };
-
-  // set message html
-
-  addMessage();
-
-  // create remove and edit buttons
-
-  createRemoveButton();
-  createEditButton();
+    for (let i = 0; i < buttons.length; i++) {
+      buttons[i].remove();
+    };
+  }
 
   // remove button functionality
 
-  removeButton.addEventListener("click", function () {
-    const entry = removeButton.parentNode;
+  const setupRemoveButton = () => {
 
-    // remove message
+    // create and append button
 
-    entry.remove();
+    const removeButton = document.createElement("button");
+    removeButton.innerText = "remove";
+    removeButton.type = "button";
+    newMessage.append(removeButton);
 
-    // hide messages header if 0 messages
+    // functionality
 
-    if (messageSection.style.display = "inline-block" && messageList.childElementCount == 0) {
-      hideMessagesSection();
-    };
-  });
+    removeButton.addEventListener("click", function() {
+
+      // remove message
+
+      newMessage.remove();
+
+      // hide messages header if 0 messages
+
+      if (messageList.childElementCount == 0) {
+        hideMessagesSection();
+      }
+    });
+  };
 
   // edit button functionality
 
-  editButton.addEventListener("click", function () {
-    
-    // hide remove and edit buttons
+  const setupEditButton = () => {
 
-    removeButton.remove();
-    editButton.remove();
+    // create and append button
 
-    // hide previous message
+    const editButton = document.createElement("button");
+    editButton.innerText = "edit";
+    editButton.type = "button";
+    newMessage.append(editButton);
 
-    const messageSpan = newMessage.querySelector("span");   
-    messageSpan.innerText = "wrote: ";
+    // functionality
 
-    // show edit box
+    editButton.addEventListener("click", function() {
 
-    let editTextBox = document.createElement("textarea");
-    editTextBox.name = "editTextBox";
-    editTextBox.required = true;
-    editTextBox.value = usersMessage;
-    newMessage.append(editTextBox);
+      // remove remove and delete buttons
 
-    // show save button
+      removeDisplayedButtons();
 
-    createSaveButton();
+      // hide previous message
+
+      const messageSpan = newMessage.querySelector("span");
+      messageSpan.innerText = "wrote: ";
+
+      // show edit box
+
+      const editTextBox = document.createElement("textarea");
+      editTextBox.name = "editTextBox";
+      editTextBox.required = true;
+      editTextBox.value = usersMessage;
+      newMessage.append(editTextBox);
+
+      // show save button
+
+      setupSaveButton(editTextBox, messageSpan);
+    });
+  };
+
+  // save button functionality
+
+  const setupSaveButton = (editTextBox, messageSpan) => {
+
+    // create and append button
+
+    const saveButton = document.createElement("button");
+    saveButton.innerText = "save";
+    saveButton.type = "button";
+    newMessage.append(saveButton);
 
     // save edit
 
-    saveButton.addEventListener("click", function () {
+    saveButton.addEventListener("click", function() {
+
+      // declare new message text
+
       usersMessage = editTextBox.value;
 
       // reset message html
 
-      addMessage();
-
-      // toggle buttons
-
-      saveButton.remove()
-      createRemoveButton();
-      createEditButton();
+      messageSpan.innerHTML = `<a href="mailto:${usersEmail}">${usersName}</a> wrote: ${usersMessage}`;
+      editTextBox.remove();
+      removeDisplayedButtons();
+      setupRemoveButton();
+      setupEditButton();
     });
-  });
+  };
+
+  // set message html and add buttons
+
+  addMessage();
 
   // reset form
 
