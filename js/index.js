@@ -169,8 +169,9 @@ messageForm.addEventListener("submit", function(event) {
 
       addMessage();
 
-      // re-show remove and edit buttons
+      // toggle buttons
 
+      saveButton.remove()
       createRemoveButton();
       createEditButton();
     });
