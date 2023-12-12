@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Raleway:wght@400;800&display=swap');
+
+body {
+  background-color: rgb(66, 75, 79);
+  color: white;
+  font-family: 'Raleway', sans-serif;
+  margin: 0;
+}
+
+section {
+  padding: 0 1rem;
+  margin: 0 1rem;
+}
+
+h1,
+h2 {
+  font-size: 30px;
+  font-weight: lighter;
+  color: lightcoral;
+  font-family: 'Kaushan Script';
+}
+
+li {
+  display: block;
+}
+
+label {
+  color: lightgoldenrodyellow;
+  font-size: 20px;
+}
+
+input,
+textarea {
+  font-size: 18px;
+  padding: 0.5rem;
+  border: 3px solid lightcoral;
+  border-radius: 5px;
+  margin: 0.25rem;
+}
+
+button {
+  border-radius: 5px;
+  margin: 0.25rem;
+  padding: 1rem;
+  font-weight: bolder;
+}
+
+button[type=submit] {
+  background-color: lightgoldenrodyellow;
+  border: 3px solid lightcoral;
+  color: darkgreen;
+}
+
+#messages button {
+  background-color: lightcoral;
+  border: 3px solid lightgoldenrodyellow;
+  color: darkblue;
+}
+
+footer {
+  background-color: lightgoldenrodyellow;
+  color: darkblue;
+  padding: 2rem;
+  margin-top: 1rem;
+}
+
+footer p {
+  margin: 0;
+}
+
+a {
+  color: lightcyan;
+  text-decoration: none;
+}
