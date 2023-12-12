@@ -84,3 +84,27 @@ a {
   color: rgb(66, 75, 79);
   padding: 1rem;
 }
+
+#experience ul {
+  display: flex;
+  flex-direction: column;
+}
+
+#skills ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#skills li {
+  padding-right: 1rem;
+}
+
+@media (max-width: 650px) {
+  #experience ul {
+    padding-left: 0;
+  }
+
+  #experience li {
+    font-size: 10px;
+  }
+}
