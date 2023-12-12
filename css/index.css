@@ -72,3 +72,14 @@ a {
   color: lightcyan;
   text-decoration: none;
 }
+
+.nav-bar {
+  background-color: lightcoral;
+  padding: 1rem;
+  font-weight: bolder;
+}
+
+.nav-bar a {
+  color: rgb(66, 75, 79);
+  padding: 1rem;
+}
