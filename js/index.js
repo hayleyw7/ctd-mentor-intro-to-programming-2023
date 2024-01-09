@@ -143,35 +143,67 @@ messageForm.addEventListener("submit", function(event) {
 // ajax
 
 const githubRequest = new XMLHttpRequest();
-const url = "https://api.github.com/users/hayleyw7/repos?per_page=200"
+const url = "https://api.github.com/users/hayleyw7/repos"
 
 githubRequest.open("GET", url);
 githubRequest.send();
 
-// githubRequest.onload = function() {
-//   const repos = JSON.parse(githubRequest.responseText);
-//   const list = document.querySelector("#projects ul");
-
-//   for (let i = 0; i < repos.length; i++) {
-//     const repo = document.createElement("li");
-
-//     repo.innerText = repos[i].name;
-//     list.appendChild(repo);
-//   }
-// };
-
-githubRequest.onload = function() {
-  const data = JSON.parse(githubRequest.responseText);
+githubRequest.addEventListener("load", function(){
+  const repos = JSON.parse(githubRequest.responseText);
   const projectList = document.querySelector("#projects ul");
 
-  for (let i = 0; i < data.length; i++) {
+  console.log(repos)
+
+  for (let i = 0; i < repos.length; i++) {
     const repo = document.createElement("li");
     const link = document.createElement("a");
+    const date = document.createElement("span"); 
 
-    link.innerText = data[i].name;
-    link.href = data[i].html_url;
+    link.innerText = repos[i].name;
+    link.href = repos[i].html_url;
+
+    const year = repos[i].created_at.split("-")[0];
+    date.innerText = ` - ${year}`;
 
     repo.appendChild(link);
+    repo.appendChild(date);
     projectList.appendChild(repo);
   }
-};
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// links
+
+// githubRequest.onload = function() {
+//   const data = JSON.parse(githubRequest.responseText);
+
+//   console.log(data)
+
+//   const projectList = document.querySelector("#projects ul");
+
+//   for (let i = 0; i < data.length; i++) {
+//     const repo = document.createElement("li");
+//     const link = document.createElement("a");
+
+//     link.innerText = data[i].name;
+//     link.href = data[i].html_url;
+
+//     repo.appendChild(link);
+//     projectList.appendChild(repo);
+//   }
+// };
