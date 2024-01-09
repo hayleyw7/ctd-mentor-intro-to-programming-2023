@@ -139,3 +139,10 @@ messageForm.addEventListener("submit", function(event) {
 
   messageForm.reset();
 });
+
+// ajax
+
+const githubRequest = new XMLHttpRequest();
+
+githubRequest.open("GET", "https://api.github.com/users/hayleyw7/repos");
+githubRequest.send();

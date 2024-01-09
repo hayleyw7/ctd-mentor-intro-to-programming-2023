@@ -46,22 +46,23 @@ button {
 }
 
 button[type=submit] {
-  background-color: lightgoldenrodyellow;
+  background-color:  lightcyan;
   border: 3px solid lightcoral;
-  color: darkgreen;
+  color: rgb(66, 75, 79);
 }
 
 #messages button {
   background-color: lightcoral;
   border: 3px solid lightgoldenrodyellow;
-  color: darkblue;
+  color: rgb(66, 75, 79);
 }
 
 footer {
   background-color: lightgoldenrodyellow;
-  color: darkblue;
+  color: rgb(66, 75, 79);
   padding: 2rem;
   margin-top: 1rem;
+  font-weight: bold;
 }
 
 footer p {
