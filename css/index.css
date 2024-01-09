@@ -48,20 +48,21 @@ button {
 button[type=submit] {
   background-color: lightgoldenrodyellow;
   border: 3px solid lightcoral;
-  color: darkgreen;
+  color: rgb(66, 75, 79);
 }
 
 #messages button {
   background-color: lightcoral;
   border: 3px solid lightgoldenrodyellow;
-  color: darkblue;
+  color: rgb(66, 75, 79);
 }
 
 footer {
   background-color: lightgoldenrodyellow;
-  color: darkblue;
+  color: rgb(66, 75, 79);
   padding: 2rem;
   margin-top: 1rem;
+  font-weight: bolder;
 }
 
 footer p {
@@ -71,4 +72,39 @@ footer p {
 a {
   color: lightcyan;
   text-decoration: none;
+}
+
+.nav-bar {
+  background-color: lightcoral;
+  padding: 1rem;
+  font-weight: bolder;
+}
+
+.nav-bar a {
+  color: rgb(66, 75, 79);
+  padding: 1rem;
+}
+
+#experience ul {
+  display: flex;
+  flex-direction: column;
+}
+
+#skills ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#skills li {
+  padding-right: 1rem;
+}
+
+@media (max-width: 650px) {
+  #experience ul {
+    padding-left: 0;
+  }
+
+  #experience li {
+    font-size: 10px;
+  }
 }
