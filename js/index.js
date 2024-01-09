@@ -143,6 +143,35 @@ messageForm.addEventListener("submit", function(event) {
 // ajax
 
 const githubRequest = new XMLHttpRequest();
+const url = "https://api.github.com/users/hayleyw7/repos?per_page=200"
 
-githubRequest.open("GET", "https://api.github.com/users/hayleyw7/repos");
+githubRequest.open("GET", url);
 githubRequest.send();
+
+// githubRequest.onload = function() {
+//   const repos = JSON.parse(githubRequest.responseText);
+//   const list = document.querySelector("#projects ul");
+
+//   for (let i = 0; i < repos.length; i++) {
+//     const repo = document.createElement("li");
+
+//     repo.innerText = repos[i].name;
+//     list.appendChild(repo);
+//   }
+// };
+
+githubRequest.onload = function() {
+  const data = JSON.parse(githubRequest.responseText);
+  const projectList = document.querySelector("#projects ul");
+
+  for (let i = 0; i < data.length; i++) {
+    const repo = document.createElement("li");
+    const link = document.createElement("a");
+
+    link.innerText = data[i].name;
+    link.href = data[i].html_url;
+
+    repo.appendChild(link);
+    projectList.appendChild(repo);
+  }
+};
