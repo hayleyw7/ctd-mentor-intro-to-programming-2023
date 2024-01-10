@@ -46,7 +46,7 @@ button {
 }
 
 button[type=submit] {
-  background-color: lightgoldenrodyellow;
+  background-color:  lightcyan;
   border: 3px solid lightcoral;
   color: rgb(66, 75, 79);
 }
